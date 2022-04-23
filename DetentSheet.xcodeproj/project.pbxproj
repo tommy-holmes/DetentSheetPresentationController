@@ -13,6 +13,10 @@
 		528CA28B280367A5001D1AAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528CA289280367A5001D1AAB /* Main.storyboard */; };
 		528CA28D280367AC001D1AAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528CA28C280367AC001D1AAB /* Assets.xcassets */; };
 		528CA290280367AC001D1AAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 528CA28E280367AC001D1AAB /* LaunchScreen.storyboard */; };
+		528CA2982803682C001D1AAB /* DetentPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528CA2972803682C001D1AAB /* DetentPresentationController.swift */; };
+		528CA29B28036D2E001D1AAB /* DetentTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528CA29A28036D2E001D1AAB /* DetentTransitionDelegate.swift */; };
+		528CA29D280373BB001D1AAB /* DetentPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528CA29C280373BB001D1AAB /* DetentPresentationAnimator.swift */; };
+		528CA29F28037713001D1AAB /* ShownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528CA29E28037713001D1AAB /* ShownViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		528CA28C280367AC001D1AAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		528CA28F280367AC001D1AAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		528CA291280367AC001D1AAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		528CA2972803682C001D1AAB /* DetentPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetentPresentationController.swift; sourceTree = "<group>"; };
+		528CA29A28036D2E001D1AAB /* DetentTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetentTransitionDelegate.swift; sourceTree = "<group>"; };
+		528CA29C280373BB001D1AAB /* DetentPresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetentPresentationAnimator.swift; sourceTree = "<group>"; };
+		528CA29E28037713001D1AAB /* ShownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShownViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +66,25 @@
 			children = (
 				528CA283280367A5001D1AAB /* AppDelegate.swift */,
 				528CA285280367A5001D1AAB /* SceneDelegate.swift */,
-				528CA287280367A5001D1AAB /* ViewController.swift */,
+				528CA29928036835001D1AAB /* View Controllers */,
 				528CA289280367A5001D1AAB /* Main.storyboard */,
 				528CA28C280367AC001D1AAB /* Assets.xcassets */,
 				528CA28E280367AC001D1AAB /* LaunchScreen.storyboard */,
 				528CA291280367AC001D1AAB /* Info.plist */,
 			);
 			path = DetentSheet;
+			sourceTree = "<group>";
+		};
+		528CA29928036835001D1AAB /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				528CA287280367A5001D1AAB /* ViewController.swift */,
+				528CA29E28037713001D1AAB /* ShownViewController.swift */,
+				528CA2972803682C001D1AAB /* DetentPresentationController.swift */,
+				528CA29A28036D2E001D1AAB /* DetentTransitionDelegate.swift */,
+				528CA29C280373BB001D1AAB /* DetentPresentationAnimator.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +158,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				528CA29B28036D2E001D1AAB /* DetentTransitionDelegate.swift in Sources */,
 				528CA288280367A5001D1AAB /* ViewController.swift in Sources */,
+				528CA2982803682C001D1AAB /* DetentPresentationController.swift in Sources */,
 				528CA284280367A5001D1AAB /* AppDelegate.swift in Sources */,
+				528CA29D280373BB001D1AAB /* DetentPresentationAnimator.swift in Sources */,
 				528CA286280367A5001D1AAB /* SceneDelegate.swift in Sources */,
+				528CA29F28037713001D1AAB /* ShownViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +319,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,6 +348,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

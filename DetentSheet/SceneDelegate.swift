@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  DetentSheet
-//
-//  Created by Tom Holmes on 10/04/2022.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
