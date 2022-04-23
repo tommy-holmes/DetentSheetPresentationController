@@ -97,16 +97,16 @@ public final class DetentPresentationController: UIPresentationController {
             let mediumHeight = screenHeight - screenHeight * 1 / 2
             let smallHeight = screenHeight - screenHeight * 1 / 4
             
-            if finalYPosition * 0.25 < largeHeight {
-                if allowedDetentIds.contains(.large) { selectedDetentIdentifier = .large }
+            if finalYPosition * 0.25 < largeHeight && allowedDetentIds.contains(.large) {
+                selectedDetentIdentifier = .large
                 moveToPosition(yPosition)
                 
-            } else if finalYPosition * 0.75 < mediumHeight {
-                if allowedDetentIds.contains(.medium) { selectedDetentIdentifier = .medium }
+            } else if finalYPosition * 0.75 < mediumHeight && allowedDetentIds.contains(.medium) {
+                selectedDetentIdentifier = .medium
                 moveToPosition(yPosition)
                 
-            } else if finalYPosition * 0.85 < smallHeight {
-                if allowedDetentIds.contains(.small) { selectedDetentIdentifier = .small }
+            } else if finalYPosition * 0.85 < smallHeight && allowedDetentIds.contains(.small) {
+                selectedDetentIdentifier = .small
                 moveToPosition(yPosition)
                 
             } else {
