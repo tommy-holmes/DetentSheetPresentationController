@@ -26,12 +26,11 @@ public final class DetentPresentationController: UIPresentationController {
     }
     
     public override func presentationTransitionWillBegin() {
-        guard let dimmedView = dimmedView else { return }
-        
-        containerView?.insertSubview(dimmedView, at: 0)
-        
         let viewPan = UIPanGestureRecognizer(target: self, action: #selector(viewPanned(_:)))
         containerView?.addGestureRecognizer(viewPan)
+        
+        guard let dimmedView = dimmedView else { return }
+        containerView?.insertSubview(dimmedView, at: 0)
         
         NSLayoutConstraint.activate(
             NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmedView]|", options: [], metrics: nil, views: ["dimmedView": dimmedView])
@@ -39,12 +38,10 @@ public final class DetentPresentationController: UIPresentationController {
         NSLayoutConstraint.activate(
             NSLayoutConstraint.constraints(withVisualFormat: "H:|[dimmedView]|", options: [], metrics: nil, views: ["dimmedView": dimmedView])
         )
-        
         guard let coordinator = presentedViewController.transitionCoordinator else {
             dimmedView.alpha = 1.0
             return
         }
-        
         coordinator.animate { _ in self.dimmedView.alpha = 1.0 }
     }
     
@@ -55,11 +52,6 @@ public final class DetentPresentationController: UIPresentationController {
         }
         
         coordinator.animate { _ in self.dimmedView.alpha = 0.0 }
-    }
-    
-    public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        print("Size change")
-        // Update VC for size change
     }
     
     public override func containerViewDidLayoutSubviews() {
@@ -125,6 +117,7 @@ extension DetentPresentationController {
         UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn) {
             self.presentedViewController.view.frame.origin.y = yPosition
             self.presentedViewController.view.layoutIfNeeded()
+            self.containerView?.setNeedsLayout()
         }
     }
     
@@ -145,13 +138,6 @@ extension DetentPresentationController {
         dimmedView.translatesAutoresizingMaskIntoConstraints = false
         dimmedView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         dimmedView.alpha = 0.0
-        
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
-        dimmedView.addGestureRecognizer(recognizer)
-    }
-    
-    @objc private func handleTap(recognizer: UITapGestureRecognizer) {
-        presentedViewController.dismiss(animated: true)
     }
 }
 

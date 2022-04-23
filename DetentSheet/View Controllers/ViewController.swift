@@ -12,7 +12,7 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let secondVC = storyboard.instantiateViewController(identifier: "ShownVC")
         
-        transitionDelegate.detents = [.medium(), .large()]
+        transitionDelegate.detents = [.small(), .medium(), .large()]
         
         secondVC.transitioningDelegate = transitionDelegate
         secondVC.modalPresentationStyle = .custom

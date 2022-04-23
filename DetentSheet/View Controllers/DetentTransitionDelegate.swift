@@ -21,13 +21,3 @@ extension DetentTransitionDelegate: UIViewControllerTransitioningDelegate {
         DetentPresentationAnimator(detents: detents, isPresentation: false)
     }
 }
-
-//extension DetentTransitionDelegate: UIAdaptivePresentationControllerDelegate {
-//    func presentationController(_ presentationController: UIPresentationController, willPresentWithAdaptiveStyle style: UIModalPresentationStyle, transitionCoordinator: UIViewControllerTransitionCoordinator?) {
-//        print("willPresent")
-//    }
-//
-//    func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
-//        nil
-//    }
-//}
