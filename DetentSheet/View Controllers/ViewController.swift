@@ -10,14 +10,14 @@ class ViewController: UIViewController {
 
     @IBAction func showSheet(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let secondVC = storyboard.instantiateViewController(identifier: "ShownVC")
+        let sheetVC = storyboard.instantiateViewController(identifier: "ShownVC")
         
-        transitionDelegate.detents = [.small(), .medium(), .large()]
+        transitionDelegate.detents = [.small(), .medium()]
         
-        secondVC.transitioningDelegate = transitionDelegate
-        secondVC.modalPresentationStyle = .custom
+        sheetVC.transitioningDelegate = transitionDelegate
+        sheetVC.modalPresentationStyle = .custom
         
-        present(secondVC, animated: true)
+        present(sheetVC, animated: true)
     }
     
 }

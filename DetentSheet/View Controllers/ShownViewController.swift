@@ -1,11 +1,11 @@
 import UIKit
 
-class ShownViewController: UIViewController {
+final class ShownViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .blue
+        view.backgroundColor = .gray
     }
     
     @IBAction func dismiss(_ sender: Any) {

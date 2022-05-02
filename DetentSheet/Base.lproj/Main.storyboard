@@ -47,7 +47,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y14-OV-vBa">
-                                <rect key="frame" x="169.5" y="432.5" width="75" height="31"/>
+                                <rect key="frame" x="169.5" y="94" width="75" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Dismiss"/>
                                 <connections>
@@ -58,15 +58,15 @@
                         <viewLayoutGuide key="safeArea" id="99m-Hl-YTS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Y14-OV-vBa" firstAttribute="centerX" secondItem="GQR-SS-av7" secondAttribute="centerX" id="AAr-nX-AMo"/>
-                            <constraint firstItem="Y14-OV-vBa" firstAttribute="centerY" secondItem="GQR-SS-av7" secondAttribute="centerY" id="WDr-py-dup"/>
+                            <constraint firstItem="Y14-OV-vBa" firstAttribute="top" secondItem="99m-Hl-YTS" secondAttribute="top" constant="50" id="T9D-QX-68B"/>
+                            <constraint firstItem="Y14-OV-vBa" firstAttribute="centerX" secondItem="GQR-SS-av7" secondAttribute="centerX" id="wvF-0g-uqM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yzG-dF-siA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8B3-WA-PlN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="906" y="138"/>
+            <point key="canvasLocation" x="905.79710144927549" y="137.94642857142856"/>
         </scene>
     </scenes>
     <resources>

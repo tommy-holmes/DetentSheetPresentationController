@@ -68,7 +68,7 @@
 			children = (
 				528CA283280367A5001D1AAB /* AppDelegate.swift */,
 				528CA285280367A5001D1AAB /* SceneDelegate.swift */,
-				52983A3828204700002963A2 /* DetentSheetUIKit */,
+				52983A3828204700002963A2 /* UIKitComponent */,
 				528CA29928036835001D1AAB /* View Controllers */,
 				528CA289280367A5001D1AAB /* Main.storyboard */,
 				528CA28C280367AC001D1AAB /* Assets.xcassets */,
@@ -87,7 +87,7 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		52983A3828204700002963A2 /* DetentSheetUIKit */ = {
+		52983A3828204700002963A2 /* UIKitComponent */ = {
 			isa = PBXGroup;
 			children = (
 				528CA2972803682C001D1AAB /* DetentPresentationController.swift */,
@@ -95,7 +95,7 @@
 				528CA29C280373BB001D1AAB /* DetentPresentationAnimator.swift */,
 				52184F65282047B500A27E02 /* Detent+Identifier.swift */,
 			);
-			path = DetentSheetUIKit;
+			path = UIKitComponent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -2,7 +2,7 @@ import UIKit
 
 internal final class DetentPresentationController: UIPresentationController {
     var detents: [Detent]
-    var preferredCornerRadius: CGFloat = 16
+    var preferredCornerRadius: CGFloat = 13
     var prefersSwipeToDismiss: Bool = false
     var largestUndimmedDetentIdentifier: Detent.Identifier = .medium
     
