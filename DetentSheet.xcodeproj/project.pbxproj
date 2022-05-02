@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52184F66282047B500A27E02 /* Detent+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52184F65282047B500A27E02 /* Detent+Identifier.swift */; };
 		528CA284280367A5001D1AAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528CA283280367A5001D1AAB /* AppDelegate.swift */; };
 		528CA286280367A5001D1AAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528CA285280367A5001D1AAB /* SceneDelegate.swift */; };
 		528CA288280367A5001D1AAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528CA287280367A5001D1AAB /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52184F65282047B500A27E02 /* Detent+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Detent+Identifier.swift"; sourceTree = "<group>"; };
 		528CA280280367A5001D1AAB /* DetentSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DetentSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		528CA283280367A5001D1AAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		528CA285280367A5001D1AAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			children = (
 				528CA283280367A5001D1AAB /* AppDelegate.swift */,
 				528CA285280367A5001D1AAB /* SceneDelegate.swift */,
+				52983A3828204700002963A2 /* DetentSheetUIKit */,
 				528CA29928036835001D1AAB /* View Controllers */,
 				528CA289280367A5001D1AAB /* Main.storyboard */,
 				528CA28C280367AC001D1AAB /* Assets.xcassets */,
@@ -80,11 +83,19 @@
 			children = (
 				528CA287280367A5001D1AAB /* ViewController.swift */,
 				528CA29E28037713001D1AAB /* ShownViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		52983A3828204700002963A2 /* DetentSheetUIKit */ = {
+			isa = PBXGroup;
+			children = (
 				528CA2972803682C001D1AAB /* DetentPresentationController.swift */,
 				528CA29A28036D2E001D1AAB /* DetentTransitionDelegate.swift */,
 				528CA29C280373BB001D1AAB /* DetentPresentationAnimator.swift */,
+				52184F65282047B500A27E02 /* Detent+Identifier.swift */,
 			);
-			path = "View Controllers";
+			path = DetentSheetUIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +173,7 @@
 				528CA288280367A5001D1AAB /* ViewController.swift in Sources */,
 				528CA2982803682C001D1AAB /* DetentPresentationController.swift in Sources */,
 				528CA284280367A5001D1AAB /* AppDelegate.swift in Sources */,
+				52184F66282047B500A27E02 /* Detent+Identifier.swift in Sources */,
 				528CA29D280373BB001D1AAB /* DetentPresentationAnimator.swift in Sources */,
 				528CA286280367A5001D1AAB /* SceneDelegate.swift in Sources */,
 				528CA29F28037713001D1AAB /* ShownViewController.swift in Sources */,

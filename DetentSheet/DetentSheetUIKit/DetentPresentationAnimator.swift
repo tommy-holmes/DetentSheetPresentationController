@@ -1,6 +1,6 @@
 import UIKit
 
-final class DetentPresentationAnimator: NSObject {
+internal final class DetentPresentationAnimator: NSObject {
     let detents: [DetentPresentationController.Detent]
     let isPresentation: Bool
     
