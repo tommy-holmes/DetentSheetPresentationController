@@ -1,6 +1,6 @@
 import UIKit
 
-internal final class DetentPresentationController: UIPresentationController {
+public final class DetentPresentationController: UIPresentationController {
     var detents: [Detent]
     var preferredCornerRadius: CGFloat = 13
     var prefersSwipeToDismiss: Bool = false
@@ -20,13 +20,13 @@ internal final class DetentPresentationController: UIPresentationController {
     init(presentedVC: UIViewController, presenting: UIViewController?, detents: [Detent]) {
         self.detents = detents
         
-        selectedDetentIdentifier = !detents.isEmpty ? detents[0].id : .large // TODO: If the default value is nil, that means the sheet displays at the smallest detent you specify in detents.
+        selectedDetentIdentifier = !detents.isEmpty ? detents[0].id : .large
         
         super.init(presentedViewController: presentedVC, presenting: presenting)
 //        self.setupDimmedView()
     }
     
-    override func presentationTransitionWillBegin() {
+    public override func presentationTransitionWillBegin() {
         let viewPan = UIPanGestureRecognizer(target: self, action: #selector(viewPanned(_:)))
         containerView?.addGestureRecognizer(viewPan)
         
@@ -55,17 +55,17 @@ internal final class DetentPresentationController: UIPresentationController {
 //        coordinator.animate { _ in self.dimmedView.alpha = 0.0 }
 //    }
     
-    override func containerViewDidLayoutSubviews() {
+    public override func containerViewDidLayoutSubviews() {
         presentedView?.frame = frameOfPresentedViewInContainerView
         presentedView?.layer.cornerRadius = preferredCornerRadius
         presentedView?.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
     
-    override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
+    public override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
         CGSize(width: parentSize.width, height: parentSize.height)
     }
     
-    override var frameOfPresentedViewInContainerView: CGRect {
+    public override var frameOfPresentedViewInContainerView: CGRect {
         var frame: CGRect = .zero
         frame.size = size(forChildContentContainer: presentedViewController, withParentContainerSize: containerView!.bounds.size)
         frame.origin = .init(x: 0, y: yPosition)
@@ -114,8 +114,8 @@ internal final class DetentPresentationController: UIPresentationController {
     }
 }
 
-extension DetentPresentationController {
-    private func moveToPosition(_ yPosition: CGFloat) {
+private extension DetentPresentationController {
+    func moveToPosition(_ yPosition: CGFloat) {
         presentedViewController.view.layoutIfNeeded()
         
         UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn) {
@@ -124,7 +124,7 @@ extension DetentPresentationController {
         }
     }
     
-    private func moveAndDismissPresentedView() {
+    func moveAndDismissPresentedView() {
         presentedViewController.view.layoutIfNeeded()
         
         UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn) {
@@ -134,7 +134,7 @@ extension DetentPresentationController {
         }
     }
     
-    private func setPreferredContentSizeFromAutolayout() {
+    func setPreferredContentSizeFromAutolayout() {
         let contentSize = self.containerView?.systemLayoutSizeFitting(
             UIView.layoutFittingCompressedSize
         )

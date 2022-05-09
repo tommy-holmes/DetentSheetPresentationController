@@ -1,9 +1,9 @@
 import UIKit
 
 public final class DetentTransitionDelegate: NSObject {
-    var detents: [DetentPresentationController.Detent] = []
-    var preferredCornerRadius: CGFloat = 13
-    var prefersSwipeToDismiss: Bool = false
+    public var detents: [DetentPresentationController.Detent] = []
+    public var preferredCornerRadius: CGFloat = 13
+    public var prefersSwipeToDismiss: Bool = false
 }
 
 extension DetentTransitionDelegate: UIViewControllerTransitioningDelegate {

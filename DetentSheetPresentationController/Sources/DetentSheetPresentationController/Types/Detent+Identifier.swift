@@ -1,6 +1,6 @@
 import Foundation
 
-extension DetentPresentationController {
+public extension DetentPresentationController {
     public final class Detent: NSObject {
         var id: Identifier
 
