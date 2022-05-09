@@ -46,7 +46,7 @@
 			isa = PBXGroup;
 			children = (
 				52A1DBEF2829709C002899BA /* DetentSheetPresentationController */,
-				528CA282280367A5001D1AAB /* DetentSheet */,
+				528CA282280367A5001D1AAB /* DetentSheetDemo */,
 				528CA281280367A5001D1AAB /* Products */,
 				52A1DBF0282970D0002899BA /* Frameworks */,
 			);
@@ -60,7 +60,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		528CA282280367A5001D1AAB /* DetentSheet */ = {
+		528CA282280367A5001D1AAB /* DetentSheetDemo */ = {
 			isa = PBXGroup;
 			children = (
 				528CA283280367A5001D1AAB /* AppDelegate.swift */,
@@ -71,7 +71,7 @@
 				528CA28E280367AC001D1AAB /* LaunchScreen.storyboard */,
 				528CA291280367AC001D1AAB /* Info.plist */,
 			);
-			path = DetentSheet;
+			path = DetentSheetDemo;
 			sourceTree = "<group>";
 		};
 		528CA29928036835001D1AAB /* View Controllers */ = {
@@ -316,7 +316,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 39UYTBG4RA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DetentSheet/Info.plist;
+				INFOPLIST_FILE = DetentSheetDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -345,7 +345,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 39UYTBG4RA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DetentSheet/Info.plist;
+				INFOPLIST_FILE = DetentSheetDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
