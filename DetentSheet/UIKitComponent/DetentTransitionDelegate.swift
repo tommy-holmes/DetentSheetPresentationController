@@ -7,7 +7,11 @@ public final class DetentTransitionDelegate: NSObject {
 }
 
 extension DetentTransitionDelegate: UIViewControllerTransitioningDelegate {
-    public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    public func presentationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController?,
+        source: UIViewController
+    ) -> UIPresentationController? {
         let presentationController = DetentPresentationController(presentedVC: presented, presenting: presenting, detents: detents)
         presentationController.preferredCornerRadius = preferredCornerRadius
         presentationController.prefersSwipeToDismiss = prefersSwipeToDismiss
@@ -15,7 +19,10 @@ extension DetentTransitionDelegate: UIViewControllerTransitioningDelegate {
         return presentationController
     }
     
-    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController, source: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
         DetentPresentationAnimator(detents: detents, isPresentation: true)
     }
     
