@@ -1,7 +1,7 @@
 import Foundation
 
 public extension DetentPresentationController {
-    public final class Detent: NSObject {
+    final class Detent: NSObject {
         var id: Identifier
 
         required init(_ id: Identifier) {
