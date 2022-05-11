@@ -1,13 +1,21 @@
 import UIKit
 
-public final class DetentPresentationController: UIPresentationController {
+public final class DetentSheetPresentationController: UIPresentationController {
     var detents: [Detent]
     var preferredCornerRadius: CGFloat = 13
     var prefersSwipeToDismiss: Bool = false
     var largestUndimmedDetentIdentifier: Detent.Identifier = .medium
     
-    private(set) var selectedDetentIdentifier: Detent.Identifier?
+    public weak var detentDelegate: DetentSheetPresentationControllerDelegate?
     
+    public private(set) var selectedDetentIdentifier: Detent.Identifier? {
+        didSet {
+            if let detentDelegate = detentDelegate {
+                detentDelegate
+                    .detentSheetPresentationControllerDidChangeSelectedDetentIdentifier(self)
+            }
+        }
+    }
 //    private var dimmedView: UIView!
 
     private var heightMultiplier: CGFloat {
@@ -92,21 +100,21 @@ public final class DetentPresentationController: UIPresentationController {
             
             if finalYPosition * 0.25 < largeHeight && allowedDetentIds.contains(.large) {
                 selectedDetentIdentifier = .large
-                moveToPosition(yPosition)
+                moveTo(yPosition)
                 
             } else if finalYPosition * 0.75 < mediumHeight && allowedDetentIds.contains(.medium) {
                 selectedDetentIdentifier = .medium
-                moveToPosition(yPosition)
+                moveTo(yPosition)
                 
             } else if finalYPosition * 0.85 < smallHeight && allowedDetentIds.contains(.small) {
                 selectedDetentIdentifier = .small
-                moveToPosition(yPosition)
+                moveTo(yPosition)
                 
             } else if prefersSwipeToDismiss {
                 moveAndDismissPresentedView()
                 
             } else {
-                moveToPosition(yPosition)
+                moveTo(yPosition)
             }
         default:
             break
@@ -114,8 +122,8 @@ public final class DetentPresentationController: UIPresentationController {
     }
 }
 
-private extension DetentPresentationController {
-    func moveToPosition(_ yPosition: CGFloat) {
+private extension DetentSheetPresentationController {
+    func moveTo(_ yPosition: CGFloat) {
         presentedViewController.view.layoutIfNeeded()
         
         UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn) {

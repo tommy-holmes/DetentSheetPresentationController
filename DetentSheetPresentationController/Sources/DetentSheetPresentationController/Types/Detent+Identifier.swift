@@ -1,6 +1,6 @@
 import Foundation
 
-public extension DetentPresentationController {
+public extension DetentSheetPresentationController {
     final class Detent: NSObject {
         var id: Identifier
 
@@ -20,14 +20,21 @@ public extension DetentPresentationController {
     }
 }
 
-extension DetentPresentationController.Detent {
+public extension DetentSheetPresentationController.Detent {
     struct Identifier: @unchecked Sendable, Equatable, Hashable, RawRepresentable {
-        let rawValue: String
+        public var rawValue: String
+        
+        public init(_ rawValue: String) {
+            self.rawValue = rawValue
+        }
+        public init(rawValue: String) {
+            self.rawValue = rawValue
+        }
     }
 }
 
-extension DetentPresentationController.Detent.Identifier {
-    static let small: Self = .init(rawValue: "small")
-    static let medium: Self = .init(rawValue: "medium")
-    static let large: Self = .init(rawValue: "large")
+public extension DetentSheetPresentationController.Detent.Identifier {
+    static let small: Self = .init("small")
+    static let medium: Self = .init("medium")
+    static let large: Self = .init("large")
 }

@@ -1,10 +1,10 @@
 import UIKit
 
 internal final class DetentPresentationAnimator: NSObject {
-    let detents: [DetentPresentationController.Detent]
+    let detents: [DetentSheetPresentationController.Detent]
     let isPresentation: Bool
     
-    init(detents: [DetentPresentationController.Detent], isPresentation: Bool) {
+    init(detents: [DetentSheetPresentationController.Detent], isPresentation: Bool) {
         self.detents = detents
         self.isPresentation = isPresentation
         super.init()
