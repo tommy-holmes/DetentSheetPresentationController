@@ -10,10 +10,8 @@ public final class DetentSheetPresentationController: UIPresentationController {
     
     public private(set) var selectedDetentIdentifier: Detent.Identifier? {
         didSet {
-            if let detentDelegate = detentDelegate {
-                detentDelegate
-                    .detentSheetPresentationControllerDidChangeSelectedDetentIdentifier(self)
-            }
+            moveTo(yPosition)
+            detentDelegate?.detentSheetPresentationControllerDidChangeSelectedDetentIdentifier(self)
         }
     }
 //    private var dimmedView: UIView!
@@ -100,15 +98,12 @@ public final class DetentSheetPresentationController: UIPresentationController {
             
             if finalYPosition * 0.25 < largeHeight && allowedDetentIds.contains(.large) {
                 selectedDetentIdentifier = .large
-                moveTo(yPosition)
                 
             } else if finalYPosition * 0.75 < mediumHeight && allowedDetentIds.contains(.medium) {
                 selectedDetentIdentifier = .medium
-                moveTo(yPosition)
                 
             } else if finalYPosition * 0.85 < smallHeight && allowedDetentIds.contains(.small) {
                 selectedDetentIdentifier = .small
-                moveTo(yPosition)
                 
             } else if prefersSwipeToDismiss {
                 moveAndDismissPresentedView()
