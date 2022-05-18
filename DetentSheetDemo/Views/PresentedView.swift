@@ -5,12 +5,19 @@ struct PresentedView: View {
     @Binding var selectedDetentId: DetentSheetPresentationController.Detent.Identifier?
     
     var body: some View {
-        VStack {
-            Button(selectedDetentId?.rawValue.capitalized ?? "Dismiss") {
-                selectedDetentId = nil
+        HStack {
+            Spacer()
+            VStack {
+                Button(selectedDetentId?.rawValue.capitalized ?? "Dismiss") {
+                    selectedDetentId = nil
+                }
+                .padding()
+                
+                Spacer()
             }
             Spacer()
         }
+        .background(Color.red.edgesIgnoringSafeArea(.all))
     }
 }
 

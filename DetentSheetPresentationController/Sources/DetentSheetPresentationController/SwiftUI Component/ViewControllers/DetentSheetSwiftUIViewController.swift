@@ -1,15 +1,27 @@
 import UIKit
 import SwiftUI
 
-final class DetentSheetViewController<Content: View>: UIViewController, DetentSheetPresentationControllerDelegate {
-    @Binding var selectedDetentIdentifier: DetentSheetPresentationController.Detent.Identifier?
+final class DetentSheetSwiftUIViewController<Content: View>: UIViewController, DetentSheetPresentationControllerDelegate {
+    private var detents: [DetentSheetPresentationController.Detent]
+    private var preferredCornerRadius: CGFloat
+    private var prefersSwipeToDismiss: Bool
+    private var largestUndimmedDetentIdentifier: DetentSheetPresentationController.Detent.Identifier
+    @Binding private var selectedDetentIdentifier: DetentSheetPresentationController.Detent.Identifier?
     
     private let contentView: UIHostingController<Content>
     
     init(
+        detents: [DetentSheetPresentationController.Detent],
+        preferredCornerRadius: CGFloat = 13,
+        prefersSwipeToDismiss: Bool = false,
+        largestUndimmedDetentIdentifier: DetentSheetPresentationController.Detent.Identifier = .medium,
         selectedDetentIdentifier: Binding<DetentSheetPresentationController.Detent.Identifier?>,
         content: Content
     ) {
+        self.detents = detents
+        self.preferredCornerRadius = preferredCornerRadius
+        self.prefersSwipeToDismiss = prefersSwipeToDismiss
+        self.largestUndimmedDetentIdentifier = largestUndimmedDetentIdentifier
         _selectedDetentIdentifier = selectedDetentIdentifier
         self.contentView = UIHostingController(rootView: content)
         
@@ -36,6 +48,10 @@ final class DetentSheetViewController<Content: View>: UIViewController, DetentSh
         ])
 
         if let presentationController = presentationController as? DetentSheetPresentationController {
+            presentationController.detents = detents
+            presentationController.preferredCornerRadius = preferredCornerRadius
+            presentationController.prefersSwipeToDismiss = prefersSwipeToDismiss
+            presentationController.largestUndimmedDetentIdentifier = largestUndimmedDetentIdentifier
             presentationController.detentDelegate = self
         }
     }

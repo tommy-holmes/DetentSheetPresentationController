@@ -24,7 +24,7 @@ private struct DetentSheetModifier<C: View>: ViewModifier {
     var preferedCornerRadius: CGFloat
     @ViewBuilder var sheetContent: C
     
-    @State private var detentSheetViewController: DetentSheetViewController<C>?
+    @State private var detentSheetViewController: DetentSheetSwiftUIViewController<C>?
     @State private var transitionDelegate = DetentTransitionDelegate()
     @State private var isPresented: Bool = false
 
@@ -56,7 +56,9 @@ private struct DetentSheetModifier<C: View>: ViewModifier {
             while let presentedVC = presentingVC.presentedViewController {
                 presentingVC = presentedVC
             }
-            detentSheetViewController = DetentSheetViewController(
+            detentSheetViewController = DetentSheetSwiftUIViewController(
+                detents: detents,
+                preferredCornerRadius: preferedCornerRadius,
                 selectedDetentIdentifier: $selectedDetentIdentifier,
                 content: sheetContent
             )

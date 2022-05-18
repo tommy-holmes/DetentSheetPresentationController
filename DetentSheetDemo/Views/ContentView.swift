@@ -10,9 +10,11 @@ struct ContentView: View {
         }
         .detentSheet(
             selectedDetentIdentifier: $selectedDetentIdentifier,
-            allowedDetents: [.small(), .medium()]
-        ) { PresentedView(selectedDetentId: $selectedDetentIdentifier) }
-            .disabled(selectedDetentIdentifier != nil)
+            allowedDetents: [.small(), .medium(), .large()]
+        ) {
+            PresentedView(selectedDetentId: $selectedDetentIdentifier)
+        }
+        .disabled(selectedDetentIdentifier != nil)
     }
 }
 
