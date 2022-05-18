@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DetentSheet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vc" id="BYZ-38-t0r" customClass="ViewController" customModule="DetentSheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,7 +47,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y14-OV-vBa">
-                                <rect key="frame" x="20" y="94" width="374" height="31"/>
+                                <rect key="frame" x="170" y="432.5" width="74.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Dismiss"/>
                                 <connections>
@@ -58,9 +58,8 @@
                         <viewLayoutGuide key="safeArea" id="99m-Hl-YTS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Y14-OV-vBa" firstAttribute="leading" secondItem="99m-Hl-YTS" secondAttribute="leading" constant="20" id="Ga5-Zt-edh"/>
-                            <constraint firstItem="Y14-OV-vBa" firstAttribute="top" secondItem="99m-Hl-YTS" secondAttribute="top" constant="50" id="T9D-QX-68B"/>
-                            <constraint firstItem="Y14-OV-vBa" firstAttribute="centerX" secondItem="GQR-SS-av7" secondAttribute="centerX" id="wvF-0g-uqM"/>
+                            <constraint firstItem="Y14-OV-vBa" firstAttribute="centerX" secondItem="GQR-SS-av7" secondAttribute="centerX" id="5js-Sz-hRn"/>
+                            <constraint firstItem="Y14-OV-vBa" firstAttribute="centerY" secondItem="GQR-SS-av7" secondAttribute="centerY" id="CWE-KG-Q0a"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yzG-dF-siA"/>

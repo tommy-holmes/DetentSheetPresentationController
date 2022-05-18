@@ -1,7 +1,7 @@
 import UIKit
 import DetentSheetPresentationController
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     lazy var transitionDelegate = DetentTransitionDelegate()
 
@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let sheetVC = storyboard.instantiateViewController(identifier: "ShownVC")
         
-        transitionDelegate.detents = [.small(), .medium()]
+        transitionDelegate.detents = [.small(), .medium(),]
         
         sheetVC.transitioningDelegate = transitionDelegate
         sheetVC.modalPresentationStyle = .custom

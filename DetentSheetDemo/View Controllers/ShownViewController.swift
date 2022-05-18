@@ -14,7 +14,7 @@ final class ShownViewController: UIViewController {
         presentationController?.detentDelegate = self
     }
     
-    @IBAction func dismiss(_ sender: Any) {
+    @IBAction private func dismiss(_ sender: Any) {
         self.dismiss(animated: true)
     }
 }
@@ -24,5 +24,16 @@ extension ShownViewController: DetentSheetPresentationControllerDelegate {
         guard let currentDetent = detentSheetPresentationController.selectedDetentIdentifier else { return }
         
         dismissButton.titleLabel?.text = currentDetent.rawValue
+//        self.view.bounds = CGRect(
+//            origin: CGPoint(x: 0, y: 0),
+//            size: CGSize(
+//                width: UIScreen.main.bounds.width,
+//                height: UIScreen.main.bounds.height - detentSheetPresentationController.frameOfPresentedViewInContainerView.origin.y
+//            )
+//        )
+//        self.view.topAnchor.constraint(equalTo: detentSheetPresentationController.presentedViewController.view.topAnchor, constant: 0).isActive = true
+//        self.view.bounds.origin.y = detentSheetPresentationController.frameOfPresentedViewInContainerView.origin.y
+//        self.view.backgroundColor = .red
+//        print("Bounds:", self.view.layer.bounds, "Sheet:", detentSheetPresentationController.frameOfPresentedViewInContainerView)
     }
 }

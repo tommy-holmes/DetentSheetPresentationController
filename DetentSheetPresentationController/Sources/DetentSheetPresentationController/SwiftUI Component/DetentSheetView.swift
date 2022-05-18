@@ -1,29 +1,29 @@
 import SwiftUI
 
-fileprivate struct DetentSheetViewWrapper<Content: View>: UIViewRepresentable {
-    @Binding var isPresented: Bool
+fileprivate struct DetentSheetViewWrapper<Content: View>: UIViewControllerRepresentable {
+    @Binding var selectedDetentIdentifier: DetentSheetPresentationController.Detent.Identifier?
     let detents: [DetentSheetPresentationController.Detent]
     let preferredCornerRadius: CGFloat
     let content: Content
     
-    private(set) var currentDetentID: DetentSheetPresentationController.Detent.Identifier?
     private let transitionDelegate = DetentTransitionDelegate()
     
-    func makeUIView(context: Context) -> UIView { .init() }
+    func makeUIViewController(context: Context) -> UIViewController { .init() }
     
     func makeCoordinator() -> Coordinator {
         Coordinator(
-            isPresented: $isPresented,
-            selectedDetentID: currentDetentID
+            selectedDetentID: $selectedDetentIdentifier
         )
     }
     
-    func updateUIView(_ uiView: UIView, context: Context) {
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         let presentedVC = UIViewController()
         let hostingController = UIHostingController(rootView: content)
         
         presentedVC.addChild(hostingController)
         presentedVC.view.addSubview(hostingController.view)
+        
+        transitionDelegate.detents = detents
         
         presentedVC.transitioningDelegate = transitionDelegate
         presentedVC.modalPresentationStyle = .custom
@@ -42,29 +42,26 @@ fileprivate struct DetentSheetViewWrapper<Content: View>: UIViewRepresentable {
         
         presentedVC.presentationController?.delegate = context.coordinator
         
-        if isPresented {
-            uiView.window?.rootViewController?.present(presentedVC, animated: true)
-        } else {
-            uiView.window?.rootViewController?.dismiss(animated: true)
-        }
+//        if selectedDetentIdentifier != nil {
+//            uiViewController.window?.rootViewController?.present(presentedVC, animated: true)
+//        } else {
+//            uiViewController.window?.rootViewController?.dismiss(animated: true)
+//        }
     }
 }
 
 private extension DetentSheetViewWrapper {
     final class Coordinator: NSObject, DetentSheetPresentationControllerDelegate {
-        @Binding var isPresented: Bool
-        var selectedDetentID: DetentSheetPresentationController.Detent.Identifier?
+        @Binding var selectedDetentID: DetentSheetPresentationController.Detent.Identifier?
         
         init(
-            isPresented: Binding<Bool>,
-            selectedDetentID: DetentSheetPresentationController.Detent.Identifier?
+            selectedDetentID: Binding<DetentSheetPresentationController.Detent.Identifier?>
         ) {
-            _isPresented = isPresented
-            self.selectedDetentID = selectedDetentID
+            _selectedDetentID = selectedDetentID
         }
         
         func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-            isPresented = false
+            selectedDetentID = nil
         }
         
         func detentSheetPresentationControllerDidChangeSelectedDetentIdentifier(_ detentSheetPresentationController: DetentSheetPresentationController) {
@@ -74,21 +71,19 @@ private extension DetentSheetViewWrapper {
 }
 
 struct DetentSheetView<Content: View>: View {
-    @Binding var isPresented: Bool
-
-    @State private var selectedDetentIdentifier: DetentSheetPresentationController.Detent.Identifier?
+    @Binding var selectedDetentIdentifier: DetentSheetPresentationController.Detent.Identifier?
 
     let detents: [DetentSheetPresentationController.Detent]
     let preferredCornerRadius: CGFloat
     var content: Content
 
     init(
-        isPresented: Binding<Bool>,
+        selectedDetentIdentifier: Binding<DetentSheetPresentationController.Detent.Identifier?>,
         detents: [DetentSheetPresentationController.Detent] = [.large()],
         preferredCornerRadius: CGFloat = 13,
         @ViewBuilder content: () -> Content
     ) {
-        _isPresented = isPresented
+        _selectedDetentIdentifier = selectedDetentIdentifier
         self.detents = detents
         self.preferredCornerRadius = preferredCornerRadius
         self.content = content()
@@ -96,7 +91,7 @@ struct DetentSheetView<Content: View>: View {
 
     var body: some View {
         DetentSheetViewWrapper(
-            isPresented: $isPresented,
+            selectedDetentIdentifier: $selectedDetentIdentifier,
             detents: detents,
             preferredCornerRadius: preferredCornerRadius,
             content: content

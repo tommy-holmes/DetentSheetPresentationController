@@ -2,16 +2,17 @@ import SwiftUI
 import DetentSheetPresentationController
 
 struct ContentView: View {
-    @State private var isPresenting: Bool = false
+    @State private var selectedDetentIdentifier: DetentSheetPresentationController.Detent.Identifier?
     
     var body: some View {
-        Button("Show Sheet") {
-            isPresenting = true
+        Button("Show SwiftUI Sheet") {
+            selectedDetentIdentifier = .small
         }
         .detentSheet(
-            isPresented: $isPresenting,
-            detents: [.small(), .medium()]
-        ) { PresentedView() }
+            selectedDetentIdentifier: $selectedDetentIdentifier,
+            allowedDetents: [.small(), .medium()]
+        ) { PresentedView(selectedDetentId: $selectedDetentIdentifier) }
+            .disabled(selectedDetentIdentifier != nil)
     }
 }
 

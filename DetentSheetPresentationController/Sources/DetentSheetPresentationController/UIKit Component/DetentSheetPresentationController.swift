@@ -1,19 +1,19 @@
 import UIKit
 
 public final class DetentSheetPresentationController: UIPresentationController {
-    var detents: [Detent]
-    var preferredCornerRadius: CGFloat = 13
-    var prefersSwipeToDismiss: Bool = false
-    var largestUndimmedDetentIdentifier: Detent.Identifier = .medium
-    
-    public weak var detentDelegate: DetentSheetPresentationControllerDelegate?
-    
-    public private(set) var selectedDetentIdentifier: Detent.Identifier? {
+    public var detents: [Detent]
+    public var preferredCornerRadius: CGFloat = 13
+    public var prefersSwipeToDismiss: Bool = false
+    public var largestUndimmedDetentIdentifier: Detent.Identifier = .medium
+    public var selectedDetentIdentifier: Detent.Identifier? {
         didSet {
             moveTo(yPosition)
             detentDelegate?.detentSheetPresentationControllerDidChangeSelectedDetentIdentifier(self)
         }
     }
+    
+    public weak var detentDelegate: DetentSheetPresentationControllerDelegate?
+    
 //    private var dimmedView: UIView!
 
     private var heightMultiplier: CGFloat {
