@@ -13,8 +13,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-//        window.rootViewController = UIHostingController(rootView: ContentView())
-        window.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "vc")
+        window.rootViewController = UIHostingController(rootView: ContentView())
+//        window.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "vc")
         
         self.window = window
         window.makeKeyAndVisible()

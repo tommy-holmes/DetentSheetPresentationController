@@ -9,12 +9,18 @@ public final class DetentSheetPresentationController: UIPresentationController {
         didSet {
             moveTo(yPosition)
             detentDelegate?.detentSheetPresentationControllerDidChangeSelectedDetentIdentifier(self)
+            
+            if selectedDetentIdentifier == .large {
+                showDimmedView()
+            } else {
+                hideDimmedView()
+            }
         }
     }
     
     public weak var detentDelegate: DetentSheetPresentationControllerDelegate?
     
-//    private var dimmedView: UIView!
+    private var dimmedView: UIView!
 
     private var heightMultiplier: CGFloat {
         selectedDetentIdentifier == .small ? 1 / 4
@@ -29,37 +35,19 @@ public final class DetentSheetPresentationController: UIPresentationController {
         selectedDetentIdentifier = !detents.isEmpty ? detents[0].id : .large
         
         super.init(presentedViewController: presentedVC, presenting: presenting)
-//        self.setupDimmedView()
+        self.setupDimmedView()
     }
     
     public override func presentationTransitionWillBegin() {
         let viewPan = UIPanGestureRecognizer(target: self, action: #selector(viewPanned(_:)))
         containerView?.addGestureRecognizer(viewPan)
         
-//        guard let dimmedView = dimmedView else { return }
-//        containerView?.insertSubview(dimmedView, at: 0)
-//
-//        NSLayoutConstraint.activate(
-//            NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmedView]|", options: [], metrics: nil, views: ["dimmedView": dimmedView])
-//        )
-//        NSLayoutConstraint.activate(
-//            NSLayoutConstraint.constraints(withVisualFormat: "H:|[dimmedView]|", options: [], metrics: nil, views: ["dimmedView": dimmedView])
-//        )
-//        guard let coordinator = presentedViewController.transitionCoordinator else {
-//            dimmedView.alpha = 1.0
-//            return
-//        }
-//        coordinator.animate { _ in self.dimmedView.alpha = 1.0 }
+        if selectedDetentIdentifier == .large { showDimmedView() }
     }
-    
-//    public override func dismissalTransitionWillBegin() {
-//        guard let coordinator = presentedViewController.transitionCoordinator else {
-//            dimmedView.alpha = 0.0
-//            return
-//        }
-//
-//        coordinator.animate { _ in self.dimmedView.alpha = 0.0 }
-//    }
+
+    public override func dismissalTransitionWillBegin() {
+        hideDimmedView()
+    }
     
     public override func containerViewDidLayoutSubviews() {
         presentedView?.frame = frameOfPresentedViewInContainerView
@@ -143,13 +131,43 @@ private extension DetentSheetPresentationController {
         )
         self.presentedViewController.preferredContentSize = contentSize!
     }
+    
+    func showDimmedView() {
+        guard let dimmedView = dimmedView else { return }
+        containerView?.insertSubview(dimmedView, at: 0)
+
+        NSLayoutConstraint.activate(
+            NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmedView]|", options: [], metrics: nil, views: ["dimmedView": dimmedView])
+        )
+        NSLayoutConstraint.activate(
+            NSLayoutConstraint.constraints(withVisualFormat: "H:|[dimmedView]|", options: [], metrics: nil, views: ["dimmedView": dimmedView])
+        )
+        guard let coordinator = presentedViewController.transitionCoordinator else {
+            UIView.animate(withDuration: 0.3) {
+                dimmedView.alpha = 1
+            }
+            return
+        }
+        coordinator.animate { _ in self.dimmedView.alpha = 1 }
+    }
+    
+    func hideDimmedView() {
+        guard let coordinator = presentedViewController.transitionCoordinator else {
+            UIView.animate(withDuration: 0.3) {
+                self.dimmedView.alpha = 0
+            }
+            return
+        }
+
+        coordinator.animate { _ in self.dimmedView.alpha = 0 }
+    }
 }
 
-//extension DetentPresentationController {
-//    private func setupDimmedView() {
-//        dimmedView = UIView()
-//        dimmedView.translatesAutoresizingMaskIntoConstraints = false
-//        dimmedView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
-//        dimmedView.alpha = 0.0
-//    }
-//}
+extension DetentSheetPresentationController {
+    private func setupDimmedView() {
+        dimmedView = UIView()
+        dimmedView.translatesAutoresizingMaskIntoConstraints = false
+        dimmedView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+        dimmedView.alpha = 0
+    }
+}

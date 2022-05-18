@@ -59,7 +59,6 @@ final class DetentSheetSwiftUIViewController<Content: View>: UIViewController, D
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
         selectedDetentIdentifier = nil
     }
 

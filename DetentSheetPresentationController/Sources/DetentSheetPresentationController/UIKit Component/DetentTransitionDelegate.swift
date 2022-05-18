@@ -21,7 +21,8 @@ extension DetentTransitionDelegate: UIViewControllerTransitioningDelegate {
     
     public func animationController(
         forPresented presented: UIViewController,
-        presenting: UIViewController, source: UIViewController
+        presenting: UIViewController,
+        source: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
         DetentPresentationAnimator(detents: detents, isPresentation: true)
     }

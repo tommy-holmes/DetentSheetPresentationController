@@ -7,6 +7,7 @@ struct PresentedView: View {
     var body: some View {
         HStack {
             Spacer()
+            
             VStack {
                 if selectedDetentId == .large {
                     Spacer()
@@ -20,7 +21,6 @@ struct PresentedView: View {
             }
             Spacer()
         }
-        .background(Color.red.edgesIgnoringSafeArea(.all))
     }
 }
 
