@@ -8,6 +8,9 @@ struct PresentedView: View {
         HStack {
             Spacer()
             VStack {
+                if selectedDetentId == .large {
+                    Spacer()
+                }
                 Button(selectedDetentId?.rawValue.capitalized ?? "Dismiss") {
                     selectedDetentId = nil
                 }
