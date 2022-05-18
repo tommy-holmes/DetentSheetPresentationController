@@ -49,6 +49,7 @@ final class DetentSheetSwiftUIViewController<Content: View>: UIViewController, D
 
         if let presentationController = presentationController as? DetentSheetPresentationController {
             presentationController.detents = detents
+            presentationController.selectedDetentIdentifier = selectedDetentIdentifier
             presentationController.preferredCornerRadius = preferredCornerRadius
             presentationController.prefersSwipeToDismiss = prefersSwipeToDismiss
             presentationController.largestUndimmedDetentIdentifier = largestUndimmedDetentIdentifier

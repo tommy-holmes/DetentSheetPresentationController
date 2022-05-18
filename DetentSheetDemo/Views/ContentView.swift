@@ -6,7 +6,7 @@ struct ContentView: View {
     
     var body: some View {
         Button("Show SwiftUI Sheet") {
-            selectedDetentIdentifier = .small
+            selectedDetentIdentifier = .medium
         }
         .detentSheet(
             selectedDetentIdentifier: $selectedDetentIdentifier,
