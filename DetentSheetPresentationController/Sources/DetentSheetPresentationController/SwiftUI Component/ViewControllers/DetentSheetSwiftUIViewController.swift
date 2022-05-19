@@ -1,7 +1,7 @@
 import UIKit
 import SwiftUI
 
-final class DetentSheetSwiftUIViewController<Content: View>: UIViewController, DetentSheetPresentationControllerDelegate {
+internal final class DetentSheetSwiftUIViewController<Content: View>: UIViewController, DetentSheetPresentationControllerDelegate {
     private var detents: [DetentSheetPresentationController.Detent]
     private var preferredCornerRadius: CGFloat
     private var prefersSwipeToDismiss: Bool
@@ -12,8 +12,8 @@ final class DetentSheetSwiftUIViewController<Content: View>: UIViewController, D
     
     init(
         detents: [DetentSheetPresentationController.Detent],
-        preferredCornerRadius: CGFloat = 13,
-        prefersSwipeToDismiss: Bool = false,
+        preferredCornerRadius: CGFloat,
+        prefersSwipeToDismiss: Bool,
         largestUndimmedDetentIdentifier: DetentSheetPresentationController.Detent.Identifier = .medium,
         selectedDetentIdentifier: Binding<DetentSheetPresentationController.Detent.Identifier?>,
         content: Content
@@ -39,6 +39,7 @@ final class DetentSheetSwiftUIViewController<Content: View>: UIViewController, D
         view.addSubview(contentView.view)
         
         contentView.view.translatesAutoresizingMaskIntoConstraints = false
+        contentView.view.layer.cornerRadius = preferredCornerRadius
         
         NSLayoutConstraint.activate([
             contentView.view.topAnchor.constraint(equalTo: view.topAnchor),
@@ -50,7 +51,6 @@ final class DetentSheetSwiftUIViewController<Content: View>: UIViewController, D
         if let presentationController = presentationController as? DetentSheetPresentationController {
             presentationController.detents = detents
             presentationController.selectedDetentIdentifier = selectedDetentIdentifier
-            presentationController.preferredCornerRadius = preferredCornerRadius
             presentationController.prefersSwipeToDismiss = prefersSwipeToDismiss
             presentationController.largestUndimmedDetentIdentifier = largestUndimmedDetentIdentifier
             presentationController.detentDelegate = self

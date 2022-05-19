@@ -5,13 +5,15 @@ public extension View {
         selectedDetentIdentifier: Binding<DetentSheetPresentationController.Detent.Identifier?>,
         allowedDetents: [DetentSheetPresentationController.Detent],
         preferedCornerRadius: CGFloat = 13,
+        prefersSwipeToDismiss: Bool = false,
         @ViewBuilder content: @escaping () -> Content
     ) -> some View {
         modifier(
             DetentSheetModifier(
                 selectedDetentIdentifier: selectedDetentIdentifier,
                 detents: allowedDetents,
-                preferedCornerRadius: preferedCornerRadius,
+                preferredCornerRadius: preferedCornerRadius,
+                prefersSwipeToDismiss: prefersSwipeToDismiss,
                 sheetContent: content
             )
         )
@@ -21,7 +23,8 @@ public extension View {
 private struct DetentSheetModifier<C: View>: ViewModifier {
     @Binding var selectedDetentIdentifier: DetentSheetPresentationController.Detent.Identifier?
     var detents: [DetentSheetPresentationController.Detent]
-    var preferedCornerRadius: CGFloat
+    var preferredCornerRadius: CGFloat
+    var prefersSwipeToDismiss: Bool
     @ViewBuilder var sheetContent: C
     
     @State private var detentSheetViewController: DetentSheetSwiftUIViewController<C>?
@@ -58,7 +61,8 @@ private struct DetentSheetModifier<C: View>: ViewModifier {
             }
             detentSheetViewController = DetentSheetSwiftUIViewController(
                 detents: detents,
-                preferredCornerRadius: preferedCornerRadius,
+                preferredCornerRadius: preferredCornerRadius,
+                prefersSwipeToDismiss: prefersSwipeToDismiss,
                 selectedDetentIdentifier: $selectedDetentIdentifier,
                 content: sheetContent
             )

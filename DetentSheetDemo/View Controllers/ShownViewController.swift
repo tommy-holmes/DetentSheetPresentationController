@@ -8,7 +8,7 @@ final class ShownViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .gray
+        view.backgroundColor = .red
         
         let presentationController = presentationController as? DetentSheetPresentationController
         presentationController?.detentDelegate = self
@@ -23,7 +23,7 @@ extension ShownViewController: DetentSheetPresentationControllerDelegate {
     func detentSheetPresentationControllerDidChangeSelectedDetentIdentifier(_ detentSheetPresentationController: DetentSheetPresentationController) {
         guard let currentDetent = detentSheetPresentationController.selectedDetentIdentifier else { return }
         
-        dismissButton.titleLabel?.text = currentDetent.rawValue
+        dismissButton.titleLabel?.text = currentDetent.rawValue.capitalized
 //        self.view.bounds = CGRect(
 //            origin: CGPoint(x: 0, y: 0),
 //            size: CGSize(
