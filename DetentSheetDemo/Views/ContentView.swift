@@ -6,7 +6,11 @@ struct ContentView: View {
     
     var body: some View {
         Button("Show SwiftUI Sheet") {
-            selectedDetentIdentifier = .medium
+            if selectedDetentIdentifier == nil {
+                selectedDetentIdentifier = .small
+            } else {
+                print("Tap through")
+            }
         }
         .detentSheet(
             selectedDetentIdentifier: $selectedDetentIdentifier,
@@ -14,7 +18,6 @@ struct ContentView: View {
         ) {
             PresentedView(selectedDetentId: $selectedDetentIdentifier)
         }
-        .disabled(selectedDetentIdentifier != nil)
     }
 }
 

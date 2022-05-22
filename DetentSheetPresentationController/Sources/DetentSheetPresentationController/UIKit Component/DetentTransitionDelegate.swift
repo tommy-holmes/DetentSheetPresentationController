@@ -24,10 +24,10 @@ extension DetentTransitionDelegate: UIViewControllerTransitioningDelegate {
         presenting: UIViewController,
         source: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
-        DetentPresentationAnimator(detents: detents, isPresentation: true)
+        DetentPresentationAnimator(isPresenting: true)
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        DetentPresentationAnimator(detents: detents, isPresentation: false)
+        DetentPresentationAnimator(isPresenting: false)
     }
 }

@@ -1,12 +1,11 @@
 import UIKit
 
 internal final class DetentPresentationAnimator: NSObject {
-    let detents: [DetentSheetPresentationController.Detent]
-    let isPresentation: Bool
+    let isPresenting: Bool
     
-    init(detents: [DetentSheetPresentationController.Detent], isPresentation: Bool) {
-        self.detents = detents
-        self.isPresentation = isPresentation
+    init(isPresenting: Bool) {
+        self.isPresenting = isPresenting
+        
         super.init()
     }
 }
@@ -17,10 +16,10 @@ extension DetentPresentationAnimator: UIViewControllerAnimatedTransitioning {
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let key: UITransitionContextViewControllerKey = isPresentation ? .to : .from
+        let key: UITransitionContextViewControllerKey = isPresenting ? .to : .from
         guard let controller = transitionContext.viewController(forKey: key) else { return }
         
-        if isPresentation {
+        if isPresenting {
             transitionContext.containerView.addSubview(controller.view)
         }
         
@@ -28,8 +27,8 @@ extension DetentPresentationAnimator: UIViewControllerAnimatedTransitioning {
         var dismissedFrame = presentedFrame
         dismissedFrame.origin.y = transitionContext.containerView.frame.size.height
         
-        let initialFrame = isPresentation ? dismissedFrame : presentedFrame
-        let finalFrame = isPresentation ? presentedFrame : dismissedFrame
+        let initialFrame = isPresenting ? dismissedFrame : presentedFrame
+        let finalFrame = isPresenting ? presentedFrame : dismissedFrame
         
         let animationDuration = transitionDuration(using: transitionContext)
         
@@ -38,7 +37,7 @@ extension DetentPresentationAnimator: UIViewControllerAnimatedTransitioning {
         UIView.animate(withDuration: animationDuration) {
             controller.view.frame = finalFrame
         } completion: { finished in
-            if !self.isPresentation {
+            if !self.isPresenting {
                 controller.view.removeFromSuperview()
             }
             transitionContext.completeTransition(finished)

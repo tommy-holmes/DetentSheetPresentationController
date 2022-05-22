@@ -155,19 +155,31 @@ private extension DetentSheetPresentationController {
         guard let coordinator = presentedViewController.transitionCoordinator else {
             UIView.animate(withDuration: 0.3) {
                 self.dimmedView.alpha = 0
+            } completion: { _ in
+                self.dimmedView.removeFromSuperview()
             }
             return
         }
 
-        coordinator.animate { _ in self.dimmedView.alpha = 0 }
+        coordinator.animate { _ in
+            self.dimmedView.alpha = 0
+        } completion: { _ in
+            self.dimmedView.removeFromSuperview()
+        }
     }
 }
 
-extension DetentSheetPresentationController {
-    private func setupDimmedView() {
+private extension DetentSheetPresentationController {
+    func setupDimmedView() {
         dimmedView = UIView()
         dimmedView.translatesAutoresizingMaskIntoConstraints = false
-        dimmedView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+        dimmedView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         dimmedView.alpha = 0
+    }
+}
+
+private final class PassthroughView: UIView {
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        false
     }
 }
