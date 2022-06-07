@@ -2,7 +2,7 @@
 
 A backport for UIKit's `UISheetPresentationController` back to iOS 13+ as well as a wrapper for SwiftUI via a `ViewModifier`. 
 
-Like Apple's implemention it has a `.large()` that is like a regular sheet and a `medium()` detent that takes up **half** of the display, but unlike Apple's, this package has a _third_ detent: `.small()`, that takes up a **quater** of the display, similar to the sheet in Apple's Maps app. 
+Like Apple's implemention it has a `.large()` that is like a regular sheet and a `.medium()` detent that takes up **half** of the display, but unlike Apple's, this package has a _third_ detent: `.small()`, that takes up a **quater** of the display, similar to the sheet in Apple's Maps app. 
 
 # How to use in UIKit
 
