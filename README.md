@@ -59,6 +59,8 @@ final class ShownViewController: UIViewController, DetentSheetPresentationContro
 }
 ```
 
+https://user-images.githubusercontent.com/59975039/172373027-0992e088-fe64-4823-8f2e-e29417023d00.mp4
+
 # How to use in SwiftUI
 
 In SwiftUI there is a `ViewModifier` called `.detentSheet` that you can power via a `State` change using the `selectedDetentIdentifier`:
