@@ -35,9 +35,9 @@ final class ViewController: UIViewController {
 ```
 
 For the `UIViewController` that is being presented you'll need to do some set up if you want it to have knowlege of the `currentDetent`:
-    1) Cast its `presentationController` to `DetentSheetPresentationController`.
-    2) Set the `presentationController.detentDelegate` to `self` and confrom the `UIViewController` to `DetentSheetPresentationControllerDelegate`.
-    3) The `detentDelegate` has a method called `detentSheetPresentationControllerDidChangeSelectedDetentIdentifier` that is called everytime the `selectedDetentIdentifier` is changed. 
+1. Cast its `presentationController` to `DetentSheetPresentationController`.
+2. Set the `presentationController.detentDelegate` to `self` and confrom the `UIViewController` to `DetentSheetPresentationControllerDelegate`.
+3. The `detentDelegate` has a method called `detentSheetPresentationControllerDidChangeSelectedDetentIdentifier` that is called everytime the `selectedDetentIdentifier` is changed. 
     
 ```swift
 final class ShownViewController: UIViewController, DetentSheetPresentationControllerDelegate {
@@ -59,9 +59,9 @@ final class ShownViewController: UIViewController, DetentSheetPresentationContro
 # How to use in SwiftUI
 
 In SwiftUI there is a `ViewModifier` called `.detentSheet` that you can power via a `State` change using the `selectedDetentIdentifier`:
-    1) Create a `State` for `DetentSheetPresentationController.Detent.Identifier?` so that when you give it a value it presents the `detentSheet` to that size. 
-    2) You can set all your configs in the arguments for the `.detentSheet` such as `allowedDentents`. 
-    3) You can then pass in the `selectedDetentId` via a `Binding` so that the presented view has knowlege of it's current detent and can set it to `nil` when it wants to be dismissed. 
+1. Create a `State` for `DetentSheetPresentationController.Detent.Identifier?` so that when you give it a value it presents the `detentSheet` to that size. 
+2. You can set all your configs in the arguments for the `.detentSheet` such as `allowedDentents`. 
+3. You can then pass in the `selectedDetentId` via a `Binding` so that the presented view has knowlege of it's current detent and can set it to `nil` when it wants to be dismissed. 
 
 ```swift
 struct ContentView: View {
