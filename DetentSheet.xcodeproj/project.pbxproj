@@ -32,6 +32,7 @@
 		528CA291280367AC001D1AAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		528CA29E28037713001D1AAB /* ShownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShownViewController.swift; sourceTree = "<group>"; };
 		52A1DBEF2829709C002899BA /* DetentSheetPresentationController */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DetentSheetPresentationController; sourceTree = "<group>"; };
+		52D41717284F6A4F00A3FC2D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +59,7 @@
 		528CA277280367A5001D1AAB = {
 			isa = PBXGroup;
 			children = (
+				52D41717284F6A4F00A3FC2D /* README.md */,
 				52A1DBEF2829709C002899BA /* DetentSheetPresentationController */,
 				528CA282280367A5001D1AAB /* DetentSheetDemo */,
 				528CA281280367A5001D1AAB /* Products */,
