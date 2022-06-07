@@ -8,7 +8,7 @@ For presenting from a `UIViewController` you'll need to instantiate a custom `Tr
 
 > **_NOTE:_** You will need to call it something _other_ than "transitioningDelegate" to avoid overriding the one that comes from `UIViewController` 
 
-Then you can set your custom configs on the `transitionDelegate` before setting it to the modal's `transitioningDelegate` (3) and calling `present`. 
+Then you can set your custom configs on the `transitionDelegate` (2) before setting it to the modal's `transitioningDelegate` (3) and calling `present`. 
 
 ```swift
 final class ViewController: UIViewController {
