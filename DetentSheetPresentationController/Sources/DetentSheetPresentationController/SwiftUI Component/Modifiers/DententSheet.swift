@@ -3,7 +3,7 @@ import SwiftUI
 public extension View {
     func detentSheet<Content: View>(
         selectedDetentIdentifier: Binding<DetentSheetPresentationController.Detent.Identifier?>,
-        allowedDetents: [DetentSheetPresentationController.Detent],
+        allowedDetents: Set<DetentSheetPresentationController.Detent>,
         preferedCornerRadius: CGFloat = 13,
         prefersSwipeToDismiss: Bool = false,
         @ViewBuilder content: @escaping () -> Content
@@ -22,7 +22,7 @@ public extension View {
 
 private struct DetentSheetModifier<C: View>: ViewModifier {
     @Binding var selectedDetentIdentifier: DetentSheetPresentationController.Detent.Identifier?
-    var detents: [DetentSheetPresentationController.Detent]
+    var detents: Set<DetentSheetPresentationController.Detent>
     var preferredCornerRadius: CGFloat
     var prefersSwipeToDismiss: Bool
     @ViewBuilder var sheetContent: C

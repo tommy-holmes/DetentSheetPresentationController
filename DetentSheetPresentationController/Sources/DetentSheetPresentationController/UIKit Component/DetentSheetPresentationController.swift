@@ -1,7 +1,7 @@
 import UIKit
 
 public final class DetentSheetPresentationController: UIPresentationController {
-    public var detents: [Detent]
+    public var detents: Set<Detent>
     public var preferredCornerRadius: CGFloat = 13
     public var prefersSwipeToDismiss: Bool = false
     public var largestUndimmedDetentIdentifier: Detent.Identifier = .medium
@@ -29,10 +29,10 @@ public final class DetentSheetPresentationController: UIPresentationController {
     }
     private var yPosition: CGFloat { UIScreen.main.bounds.height * (1 - heightMultiplier) }
     
-    init(presentedVC: UIViewController, presenting: UIViewController?, detents: [Detent]) {
+    init(presentedVC: UIViewController, presenting: UIViewController?, detents: Set<Detent>) {
         self.detents = detents
         
-        selectedDetentIdentifier = !detents.isEmpty ? detents[0].id : .large
+        selectedDetentIdentifier = !detents.isEmpty ? detents.first?.id : .large
         
         super.init(presentedViewController: presentedVC, presenting: presenting)
         self.setupDimmedView()

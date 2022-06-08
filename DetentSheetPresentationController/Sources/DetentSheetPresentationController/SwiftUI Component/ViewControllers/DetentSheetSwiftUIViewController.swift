@@ -2,7 +2,7 @@ import UIKit
 import SwiftUI
 
 internal final class DetentSheetSwiftUIViewController<Content: View>: UIViewController, DetentSheetPresentationControllerDelegate {
-    private var detents: [DetentSheetPresentationController.Detent]
+    private var detents: Set<DetentSheetPresentationController.Detent>
     private var preferredCornerRadius: CGFloat
     private var prefersSwipeToDismiss: Bool
     private var largestUndimmedDetentIdentifier: DetentSheetPresentationController.Detent.Identifier
@@ -11,7 +11,7 @@ internal final class DetentSheetSwiftUIViewController<Content: View>: UIViewCont
     private let contentView: UIHostingController<Content>
     
     init(
-        detents: [DetentSheetPresentationController.Detent],
+        detents: Set<DetentSheetPresentationController.Detent>,
         preferredCornerRadius: CGFloat,
         prefersSwipeToDismiss: Bool,
         largestUndimmedDetentIdentifier: DetentSheetPresentationController.Detent.Identifier = .medium,

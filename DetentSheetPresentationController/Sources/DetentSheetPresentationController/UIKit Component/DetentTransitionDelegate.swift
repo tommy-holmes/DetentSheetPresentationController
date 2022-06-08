@@ -1,7 +1,7 @@
 import UIKit
 
 public final class DetentTransitionDelegate: NSObject {
-    public var detents: [DetentSheetPresentationController.Detent] = []
+    public var detents: Set<DetentSheetPresentationController.Detent> = []
     public var preferredCornerRadius: CGFloat = 13
     public var prefersSwipeToDismiss: Bool = false
 }
