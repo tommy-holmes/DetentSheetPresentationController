@@ -4,6 +4,8 @@ A backport for UIKit's `UISheetPresentationController` back to iOS 13+ as well a
 
 Like Apple's implemention it has a `.large()` that is like a regular sheet and a `.medium()` detent that takes up **half** of the display, but unlike Apple's, this package has a _third_ detent: `.small()`, that takes up a **quater** of the display, similar to the sheet in Apple's Maps app. 
 
+![DetentSheet 001](https://user-images.githubusercontent.com/59975039/175058135-3cf16fb5-ef26-43ae-8f69-f7b4a48769df.jpeg)
+
 # How to use in UIKit
 
 For presenting from a `UIViewController` you'll need to instantiate a custom `TransitioningDelegate` in the form of `DetentTransitionDelegate` (1)
